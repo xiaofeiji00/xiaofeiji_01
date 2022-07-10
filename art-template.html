@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="template-web.js"></script>
+    <script src="jQuery.js"></script>
+  </head>
+  <body>
+    <div class="div1"></div>
+    <!-- 模板引擎 -->
+    <script type="text/html" id="art1">
+      <p>{{name}}</p>
+      <h1>{{age}}</h1>
+      <h2>时间:{{dat|guolv}}</h2>
+    </script>
+    <script>
+      var date = { name: "张三", age: "100", dat: new Date() };
+
+      template.defaults.imports.guolv = function (da) {
+        var a = da.getFullYear();
+        var b = da.getMonth() + 1;
+        var c = da.getDate();
+        return a + "-" + b + "-" + c;
+      };
+      var ht = template("art1", date);
+      console.log(ht);
+      $(".div1").html(ht);
+    </script>
+    <script></script>
+  </body>
+</html>
